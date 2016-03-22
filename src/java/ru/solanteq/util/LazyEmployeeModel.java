@@ -44,8 +44,7 @@ public class LazyEmployeeModel extends LazyDataModel<Employee> {
 	}
 
 	@Override
-	public Object getRowKey(Employee object
-	) {
+	public Object getRowKey(Employee object) {
 		return object.getId();
 	}
 
