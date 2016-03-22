@@ -7,6 +7,7 @@ package ru.solanteq.core;
 
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
@@ -24,6 +25,7 @@ import ru.solanteq.entities.Employee;
 @Stateless
 @TransactionManagement(TransactionManagementType.CONTAINER)
 public class HumanResourcesDepartment implements HumanResourcesDepartmentLocal {
+	private static final Logger LOG = Logger.getLogger(HumanResourcesDepartment.class.getName());
 	@PersistenceContext(unitName = "SolanteqWebPU")
 	private EntityManager em;
 
