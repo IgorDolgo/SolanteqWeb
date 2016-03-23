@@ -20,6 +20,10 @@ public class LazyEmployeeModel extends LazyDataModel<Employee> {
 	private Date dateBefore;
 	private Date dateAfter;
 
+	public LazyEmployeeModel(HumanResourcesDepartmentLocal hr) {
+		this.hr = hr;
+	}
+
 	public Date getDateAfter() {
 		return dateAfter;
 	}
@@ -34,10 +38,6 @@ public class LazyEmployeeModel extends LazyDataModel<Employee> {
 
 	public void setDateBefore(Date dateBefore) {
 		this.dateBefore = dateBefore;
-	}
-
-	public LazyEmployeeModel(HumanResourcesDepartmentLocal hr) {
-		this.hr = hr;
 	}
 
 	public void handleException(Throwable e) {
