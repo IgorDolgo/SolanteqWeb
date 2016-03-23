@@ -47,10 +47,10 @@ public class HRDtest {
 	public void testSearchEmployees() {
 		List<Employee> expected = new LinkedList<>();
 		Position position = new Position((short) 0, "Developer");
-		Employee emp = new Employee(0, "Иванов", "Иван", new Date(), position);
+		Employee emp = new Employee(2, "Иванов", "Иван", new Date(), position);
 		emp.setPatronymic("Иванович");
 		expected.add(emp);
-		emp = new Employee(1, "Фёдоров", "Фёдр", new Date(), position);
+		emp = new Employee(4, "Фёдоров", "Фёдр", new Date(), position);
 		emp.setPatronymic("Фёдорович");
 		expected.add(emp);
 		Map<String, Object> filters = new HashMap<>(1);
