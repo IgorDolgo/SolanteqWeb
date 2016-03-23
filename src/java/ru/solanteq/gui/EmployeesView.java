@@ -14,7 +14,6 @@ public class EmployeesView {
 	private HumanResourcesDepartmentLocal hrdl;
 	private LazyEmployeeModel employeeModel;
 
-	// exceptions
 	// security
 	// change locales
 	// unit tests

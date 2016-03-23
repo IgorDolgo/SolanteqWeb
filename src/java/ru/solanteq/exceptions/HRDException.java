@@ -8,7 +8,6 @@ package ru.solanteq.exceptions;
 import java.util.Locale;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
-import javax.ejb.EJBException;
 
 /**
  *
@@ -24,7 +23,7 @@ public class HRDException extends Exception {
 		return super.getMessage() + (getCause() != null ? " : " + getCause().getMessage() : "");
 	}
 	public static enum Exceptions {
-		WRONG_PATH;
+		ERROR_IN_SEARCH;
 		private final String msg;
 
 		private Exceptions() {

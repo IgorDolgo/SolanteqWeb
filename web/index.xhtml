@@ -13,6 +13,7 @@
 			</f:facet>
 		</h:head>
 		<h:body>
+			<p:growl id="growl" globalOnly="true" sticky="true" autoUpdate="true"/>
 			<h:form prependId="false">
 				<p:dataTable value="#{employeesView.employeeModel}" lazy="true" rows="3" paginator="true" paginatorAlwaysVisible="false" paginatorPosition="bottom"
 								 id="employees" widgetVar="employeesTable" var="employee" rowIndexVar="employeeIndex" style="width: auto"

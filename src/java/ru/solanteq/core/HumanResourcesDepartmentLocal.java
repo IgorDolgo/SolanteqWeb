@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import javax.ejb.Local;
 import ru.solanteq.entities.Employee;
+import ru.solanteq.exceptions.HRDException;
 
 /**
  *
@@ -16,7 +17,7 @@ import ru.solanteq.entities.Employee;
  */
 @Local
 public interface HumanResourcesDepartmentLocal {
-	List<Employee> findEmployees(int first, int pageSize, String sortField, String sort, Map<String, Object> filters);
+	List<Employee> findEmployees(int first, int pageSize, String sortField, String sort, Map<String, Object> filters) throws HRDException;
 
-	Integer countEmployees(Map<String, Object> filters);
+	Integer countEmployees(Map<String, Object> filters) throws HRDException;
 }
