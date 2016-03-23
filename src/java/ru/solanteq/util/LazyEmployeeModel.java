@@ -5,7 +5,6 @@
  */
 package ru.solanteq.util;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -27,25 +26,6 @@ public class LazyEmployeeModel extends LazyDataModel<Employee> {
 
 	public LazyEmployeeModel(HumanResourcesDepartmentLocal hr) {
 		this.hr = hr;
-	}
-
-	@Override
-	public Employee getRowData(String rowKey) {
-		try {
-			for (Employee emp : data) {
-				if (emp.getId().equals(Integer.parseInt(rowKey))) {
-					return emp;
-				}
-			}
-			return null;
-		} catch (NumberFormatException e) {
-			return null;
-		}
-	}
-
-	@Override
-	public Object getRowKey(Employee object) {
-		return object.getId();
 	}
 
 	@Override
