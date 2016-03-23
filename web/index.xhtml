@@ -15,25 +15,30 @@
 		<h:body>
 			<h:form prependId="false">
 				<p:dataTable value="#{employeesView.employeeModel}" lazy="true" rows="3" paginator="true" paginatorAlwaysVisible="false" paginatorPosition="bottom"
-								 id="employees" widgetVar="employees"  var="employee" rowIndexVar="employeeIndex"
+								 id="employees" widgetVar="employees"  var="employee" rowIndexVar="employeeIndex" style="width: 100%"
 								 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 								 rowsPerPageTemplate="20,30,50,100" currentPageReportTemplate="#{msg['table.showing']} {startRecord}-{endRecord} #{msg['table.outof']} {totalRecords}"
 								 emptyMessage="#{msg['table.empty']}" scrollable="true" rowKey="#{employee.id}">
-					<p:column headerText="#{msg['header.surname']}" filterBy="#{employee.name}" filterStyle="display: inline" filterMatchMode="contains" sortBy="#{employee.surname}">
+					<p:column headerText="#{msg['header.surname']}&lt;br/&gt;" filterBy="#{employee.name}" filterStyle="display: inline" filterMatchMode="contains" sortBy="#{employee.surname}">
 						<h:outputText value="#{employee.surname}"/>
 					</p:column>
-					<p:column headerText="#{msg['header.name']}" filterBy="#{employee.name}" filterStyle="display: inline" filterMatchMode="contains" sortBy="#{employee.name}">
+					<p:column headerText="#{msg['header.name']}&lt;br/&gt;" filterBy="#{employee.name}" filterStyle="display: inline" filterMatchMode="contains" sortBy="#{employee.name}">
 						<h:outputText value="#{employee.name}"/>
 					</p:column>
-					<p:column headerText="#{msg['header.patronymic']}" filterBy="#{employee.patronymic}" filterStyle="display: inline" filterMatchMode="contains" sortBy="#{employee.patronymic}">
+					<p:column headerText="#{msg['header.patronymic']}&lt;br/&gt;" filterBy="#{employee.patronymic}" filterStyle="display: inline" filterMatchMode="contains" sortBy="#{employee.patronymic}">
 						<h:outputText value="#{employee.patronymic}"/>
 					</p:column>
-					<p:column headerText="#{msg['header.date']}" filterBy="#{employee.dateOfBirth}" filterStyle="display: inline" filterMatchMode="contains" sortBy="#{employee.dateOfBirth}">
+					<p:column sortBy="#{employee.dateOfBirth}">
+						<f:facet name="header">
+							<h:outputText value="#{msg['header.date']}"/><br/>
+							от <p:calendar value="#{employeesView.employeeModel.dateAfter}" onchange="PF('employees').filter()"/><br/>
+							&emsp;до <p:calendar value="#{employeesView.employeeModel.dateBefore}" onchange="PF('employees').filter()"/>
+						</f:facet>
 						<h:outputText value="#{employee.dateOfBirth}" >
 							<f:convertDateTime type="date" timeZone="GMT+4"/>
 						</h:outputText>
 					</p:column>
-					<p:column headerText="#{msg['header.position']}" filterBy="#{employee.position.name}" filterStyle="display: inline" filterMatchMode="contains" sortBy="#{employee.position.name}">
+					<p:column headerText="#{msg['header.position']}&lt;br/&gt;" filterBy="#{employee.position.name}" filterStyle="display: inline" filterMatchMode="contains" sortBy="#{employee.position.name}">
 						<h:outputText value="#{employee.position.name}"/>
 					</p:column>
 				</p:dataTable>

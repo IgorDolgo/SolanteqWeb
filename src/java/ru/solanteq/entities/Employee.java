@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ru.solanteq.entities;
 
 import java.io.Serializable;
@@ -23,10 +18,6 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-/**
- *
- * @author igordolgo
- */
 @Entity
 @Table
 @NamedQuery(name = "Employee.findAll", query = "SELECT e FROM Employee e")

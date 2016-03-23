@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ru.solanteq.core;
 
 import java.util.List;
@@ -19,10 +14,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import ru.solanteq.entities.Employee;
 
-/**
- *
- * @author igordolgo
- */
 @Stateless
 @TransactionManagement(TransactionManagementType.CONTAINER)
 public class HumanResourcesDepartment implements HumanResourcesDepartmentLocal {
@@ -38,6 +29,9 @@ public class HumanResourcesDepartment implements HumanResourcesDepartmentLocal {
 		String select = "SELECT emp FROM Employee emp";
 		for (String field : filters.keySet()) {
 			where.append(" UPPER(emp.").append(field).append(") LIKE UPPER(:").append(field.replace('.', '_')).append(") AND ");
+		}
+		if (filters.containsKey("dateBefore")) {
+			where.append("emp.")
 		}
 		int size = where.length();
 		where.delete(size - 5, size);
