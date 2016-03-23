@@ -28,6 +28,11 @@
 					<p:column headerText="#{msg['header.patronymic']}" filterBy="#{employee.patronymic}" filterStyle="display: inline" filterMatchMode="contains" sortBy="#{employee.patronymic}">
 						<h:outputText value="#{employee.patronymic}"/>
 					</p:column>
+					<p:column headerText="#{msg['header.date']}" filterBy="#{employee.dateOfBirth}" filterStyle="display: inline" filterMatchMode="contains" sortBy="#{employee.dateOfBirth}">
+						<h:outputText value="#{employee.dateOfBirth}" >
+							<f:convertDateTime type="date" timeZone="GMT+4"/>
+						</h:outputText>
+					</p:column>
 					<p:column headerText="#{msg['header.position']}" filterBy="#{employee.position.name}" filterStyle="display: inline" filterMatchMode="contains" sortBy="#{employee.position.name}">
 						<h:outputText value="#{employee.position.name}"/>
 					</p:column>
