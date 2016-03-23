@@ -13,7 +13,13 @@
 			</f:facet>
 		</h:head>
 		<h:body>
-			
+			<p:dataTable value="#{employeesView.employeeModel}" lazy="true" rows="30" paginator="true" paginatorAlwaysVisible="false" paginatorPosition="bottom"
+							 id="employees" widgetVar="employees"  var="employee" rowIndexVar="employeeIndex"
+							 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+							 rowsPerPageTemplate="20,30,50,100" currentPageReportTemplate="#{msg['table.showing']} {startRecord}-{endRecord} #{msg['table.outof']} {totalRecords}"
+							 emptyMessage="#{msg['table.empty']}" scrollable="true"
+							 rowKey="#{fcont.id}" selection="#{folderView.folderContentModel.select}" selectionMode="single">
+			</p:dataTable>
 		</h:body>
 	</f:view>
 </html>
