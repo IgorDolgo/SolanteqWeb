@@ -16,7 +16,6 @@ public class EmployeesView {
 
 	// security
 	// change locales
-	// unit tests
 
 	public LazyEmployeeModel getEmployeeModel() {
 		return employeeModel;
