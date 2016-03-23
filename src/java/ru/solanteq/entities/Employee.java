@@ -53,11 +53,12 @@ public class Employee implements Serializable {
 	public Employee() {
 	}
 
-	public Employee(Integer id, String surname, String name, Date dateOfBirth) {
+	public Employee(Integer id, String surname, String name, Date dateOfBirth, Position position) {
 		this.id = id;
 		this.surname = surname;
 		this.name = name;
 		this.dateOfBirth = (Date) dateOfBirth.clone();
+		this.position = position;
 	}
 
 	public Integer getId() {
