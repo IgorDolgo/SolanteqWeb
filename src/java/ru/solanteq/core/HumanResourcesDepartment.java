@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.security.DeclareRoles;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
@@ -20,7 +21,8 @@ import static ru.solanteq.exceptions.HRDException.Exceptions.ERROR_IN_SEARCH;
 
 @Stateless
 @TransactionManagement(TransactionManagementType.CONTAINER)
-public class HumanResourcesDepartment implements HumanResourcesDepartmentLocal {
+@DeclareRoles("user")
+public class HumanResourcesDepartment implements HumanResourcesDepartmentLocal, HumanResourcesDepartmentRemote {
 	private static final Logger LOG = Logger.getLogger(HumanResourcesDepartment.class.getName());
 	@PersistenceContext(unitName = "SolanteqWebPU")
 	private EntityManager em;

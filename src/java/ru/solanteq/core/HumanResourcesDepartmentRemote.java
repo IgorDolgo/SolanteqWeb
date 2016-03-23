@@ -7,13 +7,11 @@ package ru.solanteq.core;
 
 import java.util.List;
 import java.util.Map;
-import javax.ejb.Local;
+import javax.ejb.Remote;
 import ru.solanteq.entities.Employee;
 import ru.solanteq.exceptions.HRDException;
 
-@Local
-public interface HumanResourcesDepartmentLocal {
+@Remote
+public interface HumanResourcesDepartmentRemote {
 	List<Employee> findEmployees(int first, int pageSize, String sortField, String sort, Map<String, Object> filters) throws HRDException;
-
-	Integer countEmployees(Map<String, Object> filters) throws HRDException;
 }
