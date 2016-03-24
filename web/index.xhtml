@@ -20,7 +20,7 @@
 								 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 								 rowsPerPageTemplate="3,5,10" currentPageReportTemplate="#{msg['table.showing']} {startRecord}-{endRecord} #{msg['table.outof']} {totalRecords}"
 								 emptyMessage="#{msg['table.empty']}" scrollable="true" rowKey="#{employee.id}">
-					<p:column headerText="#{msg['header.surname']}&lt;br/&gt;" filterBy="#{employee.name}" filterStyle="display: inline" filterMatchMode="contains" sortBy="#{employee.surname}">
+					<p:column headerText="#{msg['header.surname']}&lt;br/&gt;" filterBy="#{employee.surname}" filterStyle="display: inline" filterMatchMode="contains" sortBy="#{employee.surname}">
 						<h:outputText value="#{employee.surname}"/>
 					</p:column>
 					<p:column headerText="#{msg['header.name']}&lt;br/&gt;" filterBy="#{employee.name}" filterStyle="display: inline" filterMatchMode="contains" sortBy="#{employee.name}">
