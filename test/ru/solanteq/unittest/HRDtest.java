@@ -23,12 +23,14 @@ import ru.solanteq.exceptions.HRDException;
  */
 public class HRDtest {
 	private static HumanResourcesDepartmentRemote hrdr;
+	private static final String HOST = "localhost";
+	private static final String PORT = "3700";
 
 	@BeforeClass
 	public static void setUpClass() throws NamingException {
 		Properties props = new Properties();
-		props.setProperty("org.omg.CORBA.ORBInitialHost", "localhost");
-		props.setProperty("org.omg.CORBA.ORBInitialPort", "3700");
+		props.setProperty("org.omg.CORBA.ORBInitialHost", HOST);
+		props.setProperty("org.omg.CORBA.ORBInitialPort", PORT);
 		props.setProperty(Context.INITIAL_CONTEXT_FACTORY, "com.sun.enterprise.naming.SerialInitContextFactory");
 		InitialContext ctx = new InitialContext(props);
 		hrdr = (HumanResourcesDepartmentRemote) ctx.lookup(HumanResourcesDepartmentRemote.class.getName());
