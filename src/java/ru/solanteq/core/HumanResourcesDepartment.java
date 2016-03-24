@@ -35,16 +35,18 @@ public class HumanResourcesDepartment implements HumanResourcesDepartmentLocal, 
 			StringBuilder where = new StringBuilder(" WHERE");
 			StringBuilder order = new StringBuilder(20);
 			String select = "SELECT emp FROM Employee emp";
-			for (String field : filters.keySet()) {
-				switch (field) {
-					case "dateBefore":
-						where.append(" emp.dateOfBirth <= :dateBefore AND ");
-						break;
-					case "dateAfter":
-						where.append(" emp.dateOfBirth >= :dateAfter AND ");
-						break;
-					default:
-						where.append(" UPPER(emp.").append(field).append(") LIKE UPPER(:").append(field.replace('.', '_')).append(") AND ");
+			if (filters != null) {
+				for (String field : filters.keySet()) {
+					switch (field) {
+						case "dateBefore":
+							where.append(" emp.dateOfBirth <= :dateBefore AND ");
+							break;
+						case "dateAfter":
+							where.append(" emp.dateOfBirth >= :dateAfter AND ");
+							break;
+						default:
+							where.append(" UPPER(emp.").append(field).append(") LIKE UPPER(:").append(field.replace('.', '_')).append(") AND ");
+					}
 				}
 			}
 			int size = where.length();
@@ -54,14 +56,16 @@ public class HumanResourcesDepartment implements HumanResourcesDepartmentLocal, 
 			}
 			query = select + where + order;
 			TypedQuery<Employee> q = em.createQuery(query, Employee.class).setFirstResult(first).setMaxResults(pageSize);
-			for (String field : filters.keySet()) {
-				switch (field) {
-					case "dateBefore":
-					case "dateAfter":
-						q.setParameter(field, (Date) filters.get(field), TemporalType.DATE);
-						break;
-					default:
-						q.setParameter(field.replace('.', '_'), '%' + filters.get(field).toString() + '%');
+			if (filters != null) {
+				for (String field : filters.keySet()) {
+					switch (field) {
+						case "dateBefore":
+						case "dateAfter":
+							q.setParameter(field, (Date) filters.get(field), TemporalType.DATE);
+							break;
+						default:
+							q.setParameter(field.replace('.', '_'), '%' + filters.get(field).toString() + '%');
+					}
 				}
 			}
 			return q.getResultList();
@@ -77,30 +81,34 @@ public class HumanResourcesDepartment implements HumanResourcesDepartmentLocal, 
 		try {
 			StringBuilder where = new StringBuilder(" WHERE");
 			String select = "SELECT COUNT(emp.id) FROM Employee emp";
-			for (String field : filters.keySet()) {
-				switch (field) {
-					case "dateBefore":
-						where.append(" emp.dateOfBirth <= :dateBefore AND ");
-						break;
-					case "dateAfter":
-						where.append(" emp.dateOfBirth >= :dateAfter AND ");
-						break;
-					default:
-						where.append(" UPPER(emp.").append(field).append(") LIKE UPPER(:").append(field.replace('.', '_')).append(") AND ");
+			if (filters != null) {
+				for (String field : filters.keySet()) {
+					switch (field) {
+						case "dateBefore":
+							where.append(" emp.dateOfBirth <= :dateBefore AND ");
+							break;
+						case "dateAfter":
+							where.append(" emp.dateOfBirth >= :dateAfter AND ");
+							break;
+						default:
+							where.append(" UPPER(emp.").append(field).append(") LIKE UPPER(:").append(field.replace('.', '_')).append(") AND ");
+					}
 				}
 			}
 			int size = where.length();
 			where.delete(size - 5, size);
 			query = select + where;
 			TypedQuery<Long> q = em.createQuery(query, Long.class);
-			for (String field : filters.keySet()) {
-				switch (field) {
-					case "dateBefore":
-					case "dateAfter":
-						q.setParameter(field, (Date) filters.get(field), TemporalType.DATE);
-						break;
-					default:
-						q.setParameter(field.replace('.', '_'), '%' + filters.get(field).toString() + '%');
+			if (filters != null) {
+				for (String field : filters.keySet()) {
+					switch (field) {
+						case "dateBefore":
+						case "dateAfter":
+							q.setParameter(field, (Date) filters.get(field), TemporalType.DATE);
+							break;
+						default:
+							q.setParameter(field.replace('.', '_'), '%' + filters.get(field).toString() + '%');
+					}
 				}
 			}
 			List<Long> res = q.getResultList();
