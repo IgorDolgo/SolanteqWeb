@@ -31,7 +31,6 @@ public class HRDtest {
 		Properties props = new Properties();
 		props.setProperty("org.omg.CORBA.ORBInitialHost", HOST);
 		props.setProperty("org.omg.CORBA.ORBInitialPort", PORT);
-		props.setProperty(Context.INITIAL_CONTEXT_FACTORY, "com.sun.enterprise.naming.SerialInitContextFactory");
 		InitialContext ctx = new InitialContext(props);
 		hrdr = (HumanResourcesDepartmentRemote) ctx.lookup(HumanResourcesDepartmentRemote.class.getName());
 	}
